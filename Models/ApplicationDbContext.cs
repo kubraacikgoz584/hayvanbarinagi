@@ -18,5 +18,6 @@ namespace HayvanBarınagi.Models
         public DbSet<AnimalTypes> AnimalTypes { get; set; }
         public DbSet<GenderType> GenderType { get; set; }
         public DbSet<OwnedType> OwnedType { get; set; } 
+        public DbSet<Admin> Admins { get; set; }
     }
 }

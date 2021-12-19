@@ -4,51 +4,87 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Animal</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AnimalTypes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AnimalTypes.AnimalType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GenderType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GenderType.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OwnedType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OwnedType.Owned)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Travel Guide Responsive Widget Template | Home :: w3layouts</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Travel Guide, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup
+Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Text+Me+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+</head>
+<body>
+    <div class="main-section">
+        <div class="heading">
+            <h1>Hayvanın Bilgileri</h1>
+        </div>
+        <div class="child-main">
+            <div class="child-left">
+                @if (@Html.ViewData.Model.AnimalTypes.AnimalType == "At")
+                {
+                    <img src="~/web2/images/at.jpg" />
+                }
+                else if (@Html.ViewData.Model.AnimalTypes.AnimalType == "Esek")
+                {
+                    <img src="~/web2/images/esek.jpg" />
+                }
+                else if (@Html.ViewData.Model.AnimalTypes.AnimalType == "Köpek")
+                {
+                    <img src="~/web2/images/kopek.jpg" />
+                }
+                else if (@Html.ViewData.Model.AnimalTypes.AnimalType == "Kedi")
+                {
+                    <img src="~/web2/images/kedi.jpg" />
+                } 
+            </div>
+            <div class="child-right">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+                <h5>Hayvan Bilgisi</h5>
+                <ul class="address">
+                    <li>
+                        <ul class="agileits-address-text ">
+                            <li class="agile-it-adress-left"><b>Hayvanın Tipi</b></li>
+                            <li><span>:</span>@Html.DisplayFor(model => model.AnimalTypes.AnimalType)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="agileits-address-text">
+                            <li class="agile-it-adress-left"><b>Hayvanın Cinsiyeti</b></li>
+                            <li><span>:</span>@Html.DisplayFor(model => model.GenderType.Gender)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="agileits-address-text">
+                            <li class="agile-it-adress-left"><b>Hayvanın Yaşı</b></li>
+                            <li><span>:</span>@Html.DisplayFor(model => model.Age)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="agileits-address-text">
+                            <li class="agile-it-adress-left"><b>Hayvanın Rengi</b></li>
+                            <li><span>:</span>@Html.DisplayFor(model => model.Color)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="agileits-address-text">
+                            <div class="form-group"> 
+                                <a asp-action="Index">Back to List</a>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+                
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div> 
+</body>
+</html>

@@ -4,56 +4,65 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Travel Guide Responsive Widget Template | Home :: w3layouts</title>
 
-<h4>Animal</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Travel Guide, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup
+Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Text+Me+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+</head>
+<body>
+    <div class="child-main">
+        <ul class="address">
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AnimalTypeId" class="control-label"></label>
+                            <select asp-for="AnimalTypeId" class="form-control" asp-items="ViewBag.AnimalTypeId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GenderTypeId" class="control-label"></label>
+                            <select asp-for="GenderTypeId" class="form-control" asp-items="ViewBag.GenderTypeId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Age" class="control-label"></label>
+                            <input asp-for="Age" class="form-control" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OwnedTypeId" class="control-label"></label>
+                            <select asp-for="OwnedTypeId" class="form-control" asp-items="ViewBag.OwnedTypeId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Color" class="control-label"></label>
+                            <input asp-for="Color" class="form-control" />
+                            <span asp-validation-for="Color" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input  type="submit" value="Edit" class="btn btn-primary" />
+                            <a asp-action="Index">Hayvan Listesine Geri Dön</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="AnimalTypeId" class="control-label"></label>
-                <select asp-for="AnimalTypeId" class="form-control" asp-items="ViewBag.AnimalTypeId"></select>
-                <span asp-validation-for="AnimalTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GenderTypeId" class="control-label"></label>
-                <select asp-for="GenderTypeId" class="form-control" asp-items="ViewBag.GenderTypeId"></select>
-                <span asp-validation-for="GenderTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OwnedTypeId" class="control-label"></label>
-                <select asp-for="OwnedTypeId" class="form-control" asp-items="ViewBag.OwnedTypeId"></select>
-                <span asp-validation-for="OwnedTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
-                <span asp-validation-for="Color" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </ul>
     </div>
-</div>
+    <div class="clear"></div>
+</body>
+</html>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

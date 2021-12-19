@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HayvanBarınagi.Models;
+using Microsoft.AspNetCore.Authorization; 
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace HayvanBarınagi
 {
@@ -17,15 +20,16 @@ namespace HayvanBarınagi
         {
             _context = context;
         }
+         
 
-        // GET: Animals
+        [Authorize] 
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Animals.Include(a => a.AnimalTypes).Include(a => a.GenderType).Include(a => a.OwnedType);
             return View(await applicationDbContext.ToListAsync());
         }
-
-        // GET: Animals/Details/5
+         
+        [Authorize] 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,7 +50,7 @@ namespace HayvanBarınagi
             return View(animal);
         }
 
-        // GET: Animals/Create
+        [Authorize] 
         public IActionResult Create()
         {
             ViewData["AnimalTypeId"] = new SelectList(_context.AnimalTypes, "Id", "AnimalType");
@@ -55,10 +59,8 @@ namespace HayvanBarınagi
             return View();
         }
 
-        // POST: Animals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+ 
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,AnimalTypeId,GenderTypeId,Age,OwnedTypeId,Color")] Animal animal)
         {
@@ -73,8 +75,8 @@ namespace HayvanBarınagi
             ViewData["OwnedTypeId"] = new SelectList(_context.OwnedType, "Id", "Owned", animal.OwnedTypeId);
             return View(animal);
         }
-
-        // GET: Animals/Edit/5
+         
+        [Authorize] 
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,11 +94,8 @@ namespace HayvanBarınagi
             ViewData["OwnedTypeId"] = new SelectList(_context.OwnedType, "Id", "Owned", animal.OwnedTypeId);
             return View(animal);
         }
-
-        // POST: Animals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+    
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AnimalTypeId,GenderTypeId,Age,OwnedTypeId,Color")] Animal animal)
         {
@@ -130,8 +129,8 @@ namespace HayvanBarınagi
             ViewData["OwnedTypeId"] = new SelectList(_context.OwnedType, "Id", "Owned", animal.OwnedTypeId);
             return View(animal);
         }
-
-        // GET: Animals/Delete/5
+         
+        [Authorize] 
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,8 +150,8 @@ namespace HayvanBarınagi
 
             return View(animal);
         }
+        
 
-        // POST: Animals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

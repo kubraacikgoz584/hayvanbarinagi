@@ -1,0 +1,95 @@
+﻿@model IEnumerable<HayvanBarınagi.Models.Admin>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+</head>
+<p>
+    <a href="~/../../Animals/Create" class="btn btn-success">Yeni Hayvan</a>
+    <a href="~/../../Animals" class="btn btn-dark">Hayvan Listesi</a>
+    <a href="~/../../Login/GirisYap" class="btn btn-danger" onclick="deleteAllCookies()">Çıkış</a>
+</p>
+<body>
+    <table id="adminIndex" class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kullanici)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sifre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isActive)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr id="myRow+@Html.DisplayFor(modelItem => item.AdminID)">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kullanici)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sifre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isActive)
+                </td>
+                <td>
+                    <a href="~/../../Admins/Details/@Html.DisplayFor(modelItem => item.AdminID)" class="btn btn-default" style="background-color:#dee61d">Detaylar</a>
+                </td>
+                <script type="text/javascript">
+                    if (localStorage.getItem("isAdmin") == 'true') {
+                        var row = document.getElementById("myRow+@Html.DisplayFor(modelItem => item.AdminID)");
+                        var columnCount = row.cells.length;
+                        var x = row.insertCell(columnCount);
+                        x.innerHTML = '<td><a href="~/../../Admins/Delete/' + @Html.DisplayFor(modelItem => item.AdminID) + '"' + ' class="btn btn-danger">Sil</a></td>';
+
+                        columnCount = row.cells.length;
+                        var edit = row.insertCell(columnCount);
+                        edit.innerHTML = '<td><a href="~/../../Admins/Edit/' + @Html.DisplayFor(modelItem => item.AdminID) + '"' + ' class="btn btn-success">Edit</a></td>';
+                     }
+
+                </script> 
+            </tr> 
+        }
+
+    </table>
+</body>
+</html>

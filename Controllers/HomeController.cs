@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using HayvanBarınagi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HayvanBarınagi.Controllers
 {
@@ -17,12 +18,12 @@ namespace HayvanBarınagi.Controllers
         {
             _logger = logger;
         }
-
+         
         public IActionResult Index()
         {
             return View();
         }
-
+         
         public IActionResult Privacy()
         {
             return View();
