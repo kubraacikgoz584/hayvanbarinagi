@@ -16,16 +16,16 @@ Responsive web template, Smartphone Compatible web template, free webdesigns for
     <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Text+Me+One" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"> 
 </head>
 <body>
     <div class="child-main">
         <ul class="address">
             <div class="row">
                 <div class="col-md-4">
-                    <form asp-action="Edit" id="formEdit">
+                    <form asp-action="Edit" id="form">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="AdminID" />
                         <div class="form-group">
                             <label asp-for="Kullanici" class="control-label"></label>
                             <input asp-for="Kullanici" class="form-control" />
@@ -48,14 +48,14 @@ Responsive web template, Smartphone Compatible web template, free webdesigns for
                         </div>
                         <script>
                             if (localStorage.getItem("isAdmin") == "true") {
-                                var f = document.getElementById("formEdit");
+                                console.log(localStorage.getItem("isAdmin"));
+                                var f = document.getElementById("form");
                                 f.innerHTML += "<div class='form-group form-check'><label class='form-check-label'><input class='form-check-input' type='checkbox' data-val='true' data-val-required='The isActive field is required.' id='isActive' name='isActive' value='true'>" + "isActive" + "</input></label></div>";
 
                             }
                         </script>
                         <div class="form-group">
-                            <input type="submit" value="Edit" class="btn btn-primary" />
-                            <a asp-action="Index">Kullanıcı Geri Dön</a>
+                            <input type="submit" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                 </div>
